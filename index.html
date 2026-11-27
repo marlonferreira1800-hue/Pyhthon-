@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Python from ZERO to Object-Oriented Programming — A hands-on 23-chapter course based on Fernando Feltrin's book, built around Reverse Engineering, tiered exercises, pytest verification, and the AutoPy Final Project.">
+  <meta name="theme-color" content="#0B1120">
+  <title>Python from ZERO to OOP — Reverse Engineering Course</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B1120'/%3E%3Cpath d='M31.8 11c-9.9 0-9.3 4.3-9.3 4.3v4.5h9.5v1.4H18.7S12 20.4 12 30.6c0 10.2 5.8 9.8 5.8 9.8h3.5v-4.7s-.2-5.8 5.7-5.8h9.7s5.4.1 5.4-5.2V16.4S42.9 11 31.8 11zm-5.3 3.2c1 0 1.8.8 1.8 1.8s-.8 1.8-1.8 1.8-1.8-.8-1.8-1.8.8-1.8 1.8-1.8z' fill='%2338BDF8'/%3E%3Cpath d='M32.2 53c9.9 0 9.3-4.3 9.3-4.3v-4.5H32v-1.4h13.3S52 43.6 52 33.4c0-10.2-5.8-9.8-5.8-9.8h-3.5v4.7s.2 5.8-5.7 5.8h-9.7s-5.4-.1-5.4 5.2v8.3S21.1 53 32.2 53zm5.3-3.2c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8z' fill='%23FFD43B'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Python from Zero to OOP Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="32" height="32" fill="none">
+            <rect width="64" height="64" rx="14" fill="currentColor" fill-opacity="0.1"/>
+            <path d="M31.8 12c-9.4 0-8.8 4.1-8.8 4.1v4.3h9v1.3H19.4S13 21 13 30.7c0 9.7 5.5 9.3 5.5 9.3h3.3v-4.5s-.2-5.5 5.4-5.5h9.2s5.2.1 5.2-5v-7.9S42.3 12 31.8 12zm-5 3a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4z" fill="#38BDF8"/>
+            <path d="M32.2 52c9.4 0 8.8-4.1 8.8-4.1v-4.3h-9v-1.3h12.6S51 43 51 33.3c0-9.7-5.5-9.3-5.5-9.3h-3.3v4.5s.2 5.5-5.4 5.5h-9.2s-5.2-.1-5.2 5v7.9S21.7 52 32.2 52zm5-3a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4z" fill="#FFD43B"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Python Zero → OOP</strong>
+          <small>Reverse Engineering Edition</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+        <a href="#methodology">Methodology</a>
+        <a href="#track">23-Chapter Track</a>
+        <a href="#lab">Reverse Lab</a>
+        <a href="#autopy">AutoPy Project</a>
+        <a href="#resources">Guide &amp; CLI</a>
+      </nav>
+
+      <div class="header-actions">
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-pressed="false"
+          aria-label="Switch to light theme"
+          title="Toggle Dark / Light theme"
+        >
+          <span class="theme-icon" id="themeIcon" aria-hidden="true"></span>
+          <span class="theme-label" id="themeLabel">Light</span>
+        </button>
+
+        <a
+          class="btn btn-sm btn-outline header-gh"
+          href="https://github.com/marlonferreira1800-hue/Pyhthon-.git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menuToggle"
+          aria-expanded="false"
+          aria-controls="mainNav"
+          aria-label="Open navigation menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Based on <em>Python do ZERO à Programação Orientada a Objetos</em> by Fernando Feltrin
+          </p>
+
+          <h1 id="hero-title">
+            Master Python from <span class="text-blue">Zero</span> to
+            <span class="text-gold">Object-Oriented Programming</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            A complete, self-paced curriculum transforming all 23 chapters into runnable Python 3.10+ scripts,
+            line-by-line <strong>Reverse Engineering</strong> breakdowns, tiered exercises, automated
+            <code>pytest</code> suites, and the modular <strong>AutoPy</strong> Fleet Rental System.
+          </p>
+
+          <ul class="badge-row" aria-label="Course highlights">
+            <li class="pill pill-blue">23 Chapters</li>
+            <li class="pill pill-gold">5 Modules</li>
+            <li class="pill pill-cyan">AutoPy Project</li>
+            <li class="pill pill-neutral">Python 3.10+</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#track">
+              Explore Track
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              class="btn btn-outline"
+              href="https://github.com/marlonferreira1800-hue/Pyhthon-.git"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub
+            </a>
+            <a class="btn btn-ghost" href="#autopy">
+              Final Project
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-terminal" aria-label="Course Reverse Engineering Code Preview">
+          <div class="terminal-bar">
+            <div class="terminal-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="terminal-title">autopy_preview.py — Python 3.10+</span>
+            <span class="terminal-tag">Ch. 21 &amp; 23</span>
+          </div>
+          <pre class="terminal-code"><code><span class="tok-kw">class</span> <span class="tok-cls">Vehicle</span>:
+    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-self">self</span>, model: <span class="tok-type">str</span>, rate: <span class="tok-type">float</span>) -> <span class="tok-kw">None</span>:
+        <span class="tok-self">self</span>.model = model
+        <span class="tok-self">self</span>._rate = rate
+
+    <span class="tok-kw">def</span> <span class="tok-fn">rental_total</span>(<span class="tok-self">self</span>, days: <span class="tok-type">int</span>) -> <span class="tok-type">float</span>:
+        <span class="tok-kw">return</span> <span class="tok-fn">round</span>(<span class="tok-self">self</span>._rate * days, <span class="tok-num">2</span>)
+
+<span class="tok-kw">class</span> <span class="tok-cls">ExecutiveCar</span>(<span class="tok-cls">Vehicle</span>):
+    <span class="tok-kw">def</span> <span class="tok-fn">rental_total</span>(<span class="tok-self">self</span>, days: <span class="tok-type">int</span>) -> <span class="tok-type">float</span>:
+        <span class="tok-kw">return</span> <span class="tok-fn">round</span>(<span class="tok-fn">super</span>().rental_total(days) * <span class="tok-num">0.95</span>, <span class="tok-num">2</span>)</code></pre>
+          <div class="terminal-footer">
+            <div class="stat-mini">
+              <strong>5</strong>
+              <span>Structured Modules</span>
+            </div>
+            <div class="stat-mini">
+              <strong>23</strong>
+              <span>Book Chapters</span>
+            </div>
+            <div class="stat-mini">
+              <strong>100%</strong>
+              <span>Pure Python &amp; pytest</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY SECTION -->
+    <section class="section" id="methodology" aria-labelledby="methodology-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Pedagogical Approach</span>
+          <h2 id="methodology-title">The &ldquo;Reverse Engineering&rdquo; Methodology</h2>
+          <p class="section-lead">
+            Inspired directly by Fernando Feltrin&rsquo;s teaching philosophy: instead of memorizing isolated
+            definitions in a vacuum, you start with complete working code and dissect every single token.
+          </p>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <div class="step-badge">01</div>
+            <h3>See Working Code First</h3>
+            <p>
+              Every chapter opens with a self-contained, runnable Python script so you observe real inputs,
+              memory state, and outputs before tackling abstract theory.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <div class="step-badge">02</div>
+            <h3>Dissect Line by Line</h3>
+            <p>
+              Follow Python&rsquo;s lexical scan top-to-bottom and left-to-right. Understand why each quote,
+              parenthesis, indentation block, and method call behaves the way it does.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <div class="step-badge">03</div>
+            <h3>Modern Python 3.10+ Notes</h3>
+            <p>
+              Faithful to the book&rsquo;s sequence while clarifying modern Python behavior:
+              <code>keyword.kwlist</code> (35 keywords), <code>is</code> vs <code>==</code>,
+              <code>*args</code> as <code>tuple</code>, <code>match/case</code>, and safe <code>finally</code> blocks.
+            </p>
+          </article>
+
+          <article class="method-card">
+            <div class="step-badge">04</div>
+            <h3>Practice &amp; Verify with pytest</h3>
+            <p>
+              Apply each module through Basic, Intermediate, and Challenge exercises, compare against
+              reference solutions, and validate everything automatically with <code>pytest</code>.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 5-MODULE & 23-CHAPTER TRACK -->
+    <section class="section section-alt" id="track" aria-labelledby="track-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Complete Curriculum</span>
+          <h2 id="track-title">Interactive Track: 5 Modules &amp; 23 Chapters</h2>
+          <p class="section-lead">
+            Filter by module or search any chapter, topic, or Python keyword. Jump straight to each module&rsquo;s
+            lesson guide or inspect classic chapters inside the Reverse Engineering Lab.
+          </p>
+        </div>
+
+        <!-- Static Direct Module Links (guarantees instant access & contract visibility) -->
+        <div class="module-overview-strip" aria-label="Direct links to all five modules">
+          <a class="module-pill-link" href="modules/module_01_fundamentals/README.md">
+            <span class="mp-num">M1</span>
+            <span>Fundamentals (Ch. 1–8)</span>
+          </a>
+          <a class="module-pill-link" href="modules/module_02_control_flow_strings/README.md">
+            <span class="mp-num">M2</span>
+            <span>Control Flow &amp; Strings (Ch. 9–12)</span>
+          </a>
+          <a class="module-pill-link" href="modules/module_03_data_structures_functions/README.md">
+            <span class="mp-num">M3</span>
+            <span>Data Structures &amp; Functions (Ch. 13–17)</span>
+          </a>
+          <a class="module-pill-link" href="modules/module_04_modules_exceptions/README.md">
+            <span class="mp-num">M4</span>
+            <span>Modules &amp; Exceptions (Ch. 18–20, 22)</span>
+          </a>
+          <a class="module-pill-link" href="modules/module_05_oop/README.md">
+            <span class="mp-num">M5</span>
+            <span>OOP &amp; Closing (Ch. 21, 23)</span>
+          </a>
+        </div>
+
+        <div class="track-controls">
+          <div class="module-tabs" id="moduleTabs" role="tablist" aria-label="Filter chapters by module">
+            <button type="button" class="tab-btn is-active" role="tab" aria-selected="true" data-module="all">
+              All (23 Ch.)
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-module="1">
+              Module 1 · Ch. 1–8
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-module="2">
+              Module 2 · Ch. 9–12
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-module="3">
+              Module 3 · Ch. 13–17
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-module="4">
+              Module 4 · Ch. 18–20, 22
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" data-module="5">
+              Module 5 · Ch. 21, 23
+            </button>
+          </div>
+
+          <div class="search-box">
+            <label class="sr-only" for="chapterSearch">Search chapters and Python topics</label>
+            <input
+              type="search"
+              id="chapterSearch"
+              placeholder="Filter chapters or keywords (e.g. LIFO, try, Cars, f-string, range)..."
+              autocomplete="off"
+            >
+            <button type="button" class="search-clear" id="clearSearch" hidden aria-label="Clear search">
+              Clear
+            </button>
+          </div>
+        </div>
+
+        <div class="track-meta-bar">
+          <p id="trackCount" aria-live="polite">Showing 23 of 23 chapters</p>
+          <a class="inline-link" href="SYLLABUS.md">Open full syllabus map (SYLLABUS.md) →</a>
+        </div>
+
+        <div id="moduleBanner" class="module-banner" hidden></div>
+
+        <div id="chaptersGrid" class="chapters-grid"></div>
+
+        <div id="emptyTrackState" class="empty-state" hidden>
+          <h3>No matching chapters found</h3>
+          <p>Try another keyword or reset the active module filter.</p>
+          <button type="button" class="btn btn-sm btn-primary" id="resetTrackFilters">Show All 23 Chapters</button>
+        </div>
+
+        <noscript>
+          <div class="noscript-box">
+            <p>JavaScript is disabled. Browse the full 23-chapter index directly in <a href="SYLLABUS.md">SYLLABUS.md</a>.</p>
+          </div>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE REVERSE ENGINEERING LAB -->
+    <section class="section" id="lab" aria-labelledby="lab-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Interactive Code Dissection</span>
+          <h2 id="lab-title">Reverse Engineering Laboratory</h2>
+          <p class="section-lead">
+            Select a classic example from Fernando Feltrin&rsquo;s book, click any line of code (or step through
+            line by line), and inspect exactly what Python does in memory and in console output.
+          </p>
+        </div>
+
+        <div class="lab-shell">
+          <div class="lab-selector" id="labSelector" role="tablist" aria-label="Book code examples"></div>
+
+          <div class="lab-header-bar">
+            <div class="lab-info">
+              <span class="lab-badge" id="labModuleBadge">Module 1 · Ch. 3</span>
+              <h3 id="labExampleTitle">Loading example...</h3>
+              <p id="labExampleSubtitle"></p>
+            </div>
+            <div class="lab-controls">
+              <div class="lab-scenarios" id="labScenarios" hidden></div>
+              <button type="button" class="btn btn-sm btn-ghost" id="labModeToggle" aria-pressed="false">
+                Show All Lines
+              </button>
+              <button type="button" class="btn btn-sm btn-outline" id="labCopyBtn">
+                Copy Code
+              </button>
+            </div>
+          </div>
+
+          <div class="lab-workspace">
+            <div class="lab-code-panel">
+              <div class="panel-bar">
+                <span id="labFileName">example.py</span>
+                <span class="panel-hint">Click any line to reverse-engineer it</span>
+              </div>
+              <div class="code-lines" id="labCodeLines" role="listbox" aria-label="Interactive Python code lines"></div>
+              <div class="lab-step-nav">
+                <button type="button" class="btn btn-sm btn-ghost" id="labPrevLine">← Previous Line</button>
+                <span class="step-indicator" id="labStepCounter">Line 1 of 1</span>
+                <button type="button" class="btn btn-sm btn-ghost" id="labNextLine">Next Line →</button>
+              </div>
+            </div>
+
+            <div class="lab-analysis-panel">
+              <div class="analysis-card">
+                <div class="panel-bar">
+                  <span>Line-by-Line Reverse Engineering</span>
+                  <span class="accent-tag" id="labLineTag">Line 1</span>
+                </div>
+                <div class="analysis-body" id="labExplanation" aria-live="polite"></div>
+              </div>
+
+              <div class="output-card">
+                <div class="panel-bar">
+                  <span>Simulated Terminal Output</span>
+                  <span class="status-pill" id="labOutputStatus">Exit 0</span>
+                </div>
+                <pre class="output-pre" id="labOutputPre"></pre>
+              </div>
+
+              <div class="lab-footer-link">
+                <a id="labModuleLink" class="inline-link" href="modules/module_01_fundamentals/README.md">
+                  Open full lesson in module README →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL PROJECT AUTOPY SHOWCASE -->
+    <section class="section section-alt" id="autopy" aria-labelledby="autopy-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Capstone System · Modules 1–5 Integrated</span>
+          <h2 id="autopy-title">Final Project Showcase: AutoPy Fleet Rental System</h2>
+          <p class="section-lead">
+            AutoPy unifies the book&rsquo;s recurring examples (<code>Vehicle</code>, <code>Gol</code>,
+            <code>Corsa</code>, <code>Customer</code>, pricing logic, and formatted reports) into a clean,
+            modular Python package with automated <code>--demo</code> execution and interactive CLI mode.
+          </p>
+        </div>
+
+        <div class="autopy-grid">
+          <div class="autopy-arch-card">
+            <h3>Modular Package Architecture</h3>
+            <p class="arch-desc">
+              Clean separation between domain models, business services, custom exceptions, and terminal presentation.
+            </p>
+            <ul class="arch-tree">
+              <li>
+                <code>final_project/main.py</code>
+                <span>Entry point supporting non-blocking <code>--demo</code> and interactive menu</span>
+              </li>
+              <li>
+                <code>final_project/autopy/__init__.py</code>
+                <span>Public package interface &amp; exports</span>
+              </li>
+              <li>
+                <code>final_project/autopy/models.py</code>
+                <span><code>Vehicle</code>, <code>EconomyCar</code>, <code>ExecutiveCar</code>, <code>UtilityVehicle</code>, <code>Client</code> &amp; <code>RentalRecord</code></span>
+              </li>
+              <li>
+                <code>final_project/autopy/services.py</code>
+                <span><code>AutoPyRentalService</code>, LIFO undo stack, category <code>set</code>, recursion &amp; reports</span>
+              </li>
+              <li>
+                <code>final_project/autopy/exceptions.py</code>
+                <span>Custom <code>AutoPyError</code> exception hierarchy handled via <code>try/except/else/finally</code></span>
+              </li>
+              <li>
+                <code>final_project/autopy/cli.py</code>
+                <span>Argparse CLI, automated <code>--demo</code> runner, and interactive menu</span>
+              </li>
+            </ul>
+            <div class="arch-actions">
+              <a class="btn btn-primary btn-sm" href="final_project/README.md">Read AutoPy Docs</a>
+              <a class="btn btn-outline btn-sm" href="final_project/main.py">Inspect main.py</a>
+            </div>
+          </div>
+
+          <div class="autopy-commands-card">
+            <h3>Run, Inspect &amp; Verify Locally</h3>
+            <p class="arch-desc">
+              Execute these commands from the repository root (Python 3.10+ required, zero external runtime dependencies):
+            </p>
+
+            <div class="cmd-list">
+              <div class="cmd-item">
+                <div class="cmd-meta">
+                  <strong>1. Run AutoPy Automated Demo</strong>
+                  <span>Executes the full rental &amp; undo stack simulation cleanly</span>
+                </div>
+                <div class="cmd-box">
+                  <code id="cmd-demo">python final_project/main.py --demo</code>
+                  <button type="button" class="copy-cmd-btn" data-copy-target="cmd-demo">Copy</button>
+                </div>
+              </div>
+
+              <div class="cmd-item">
+                <div class="cmd-meta">
+                  <strong>2. Run Full pytest Suite</strong>
+                  <span>Verifies all 5 modules, examples, solutions, and AutoPy</span>
+                </div>
+                <div class="cmd-box">
+                  <code id="cmd-pytest">python -m pytest -v</code>
+                  <button type="button" class="copy-cmd-btn" data-copy-target="cmd-pytest">Copy</button>
+                </div>
+              </div>
+
+              <div class="cmd-item">
+                <div class="cmd-meta">
+                  <strong>3. List Curriculum via Course CLI</strong>
+                  <span>Displays every module, chapter range, and file path</span>
+                </div>
+                <div class="cmd-box">
+                  <code id="cmd-cli">python course_cli.py --list</code>
+                  <button type="button" class="copy-cmd-btn" data-copy-target="cmd-cli">Copy</button>
+                </div>
+              </div>
+
+              <div class="cmd-item">
+                <div class="cmd-meta">
+                  <strong>4. Clone the Repository</strong>
+                  <span>Get the full source code, exercises, and tests</span>
+                </div>
+                <div class="cmd-box">
+                  <code id="cmd-clone">git clone https://github.com/marlonferreira1800-hue/Pyhthon-.git</code>
+                  <button type="button" class="copy-cmd-btn" data-copy-target="cmd-clone">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="integration-pills" aria-label="Concepts integrated in AutoPy">
+              <span>OOP &amp; super()</span>
+              <span>@property Encapsulation</span>
+              <span>LIFO Undo Stack</span>
+              <span>Sets &amp; Dicts</span>
+              <span>Recursion</span>
+              <span>Custom Exceptions</span>
+              <span>f-string Reports</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENVIRONMENT & PORTAL RESOURCES -->
+    <section class="section" id="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">Course Navigation</span>
+          <h2 id="resources-title">Portal Documents &amp; Environment Setup</h2>
+          <p class="section-lead">
+            Start quickly with our repository guides covering Backend vs. Frontend, Python 3.10+ installation,
+            IDEs (PyCharm, VS Code, Anaconda, Jupyter), and CLI navigation.
+          </p>
+        </div>
+
+        <div class="resources-grid">
+          <a class="resource-card" href="README.md">
+            <span class="res-tag">Portal</span>
+            <h3>README.md</h3>
+            <p>Main course portal with learning workflow, directory map, and quick commands.</p>
+            <span class="res-cta">Open Portal →</span>
+          </a>
+
+          <a class="resource-card" href="SYLLABUS.md">
+            <span class="res-tag">Curriculum</span>
+            <h3>SYLLABUS.md</h3>
+            <p>Detailed chapter-by-chapter map linking all 23 book chapters to repository files.</p>
+            <span class="res-cta">Open Syllabus →</span>
+          </a>
+
+          <a class="resource-card" href="ENVIRONMENT_GUIDE.md">
+            <span class="res-tag">Setup · Ch. 2</span>
+            <h3>ENVIRONMENT_GUIDE.md</h3>
+            <p>Backend vs. Frontend, language levels, Python setup, PyCharm, VS Code, and Jupyter.</p>
+            <span class="res-cta">Open Guide →</span>
+          </a>
+
+          <a class="resource-card" href="course_cli.py">
+            <span class="res-tag">CLI Utility</span>
+            <h3>course_cli.py</h3>
+            <p>Standard-library terminal explorer with <code>--list</code>, <code>--module N</code>, and <code>--check</code>.</p>
+            <span class="res-cta">View CLI Script →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>Python from ZERO to Object-Oriented Programming</strong>
+        <p>
+          Based on the book <em>Python do ZERO à Programação Orientada a Objetos</em>
+          (<em>Python from Zero to Object-Oriented Programming</em>) — Updated &amp; Expanded Edition,
+          by <strong>Fernando Feltrin</strong>.
+        </p>
+        <blockquote class="footer-slogan">
+          &ldquo;Life is too short to program in any language other than Python.&rdquo;
+        </blockquote>
+      </div>
+
+      <div class="footer-col">
+        <h4>Course Docs</h4>
+        <ul>
+          <li><a href="README.md">Course Portal (README.md)</a></li>
+          <li><a href="SYLLABUS.md">Full Syllabus (SYLLABUS.md)</a></li>
+          <li><a href="ENVIRONMENT_GUIDE.md">Environment Guide</a></li>
+          <li><a href="course_cli.py">Course Navigator CLI</a></li>
+          <li><a href="final_project/README.md">AutoPy Final Project</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Modules</h4>
+        <ul>
+          <li><a href="modules/module_01_fundamentals/README.md">Module 1 · Fundamentals (Ch. 1–8)</a></li>
+          <li><a href="modules/module_02_control_flow_strings/README.md">Module 2 · Control &amp; Strings (Ch. 9–12)</a></li>
+          <li><a href="modules/module_03_data_structures_functions/README.md">Module 3 · Data &amp; Functions (Ch. 13–17)</a></li>
+          <li><a href="modules/module_04_modules_exceptions/README.md">Module 4 · Modules &amp; Exceptions (Ch. 18–20, 22)</a></li>
+          <li><a href="modules/module_05_oop/README.md">Module 5 · OOP &amp; Closing (Ch. 21, 23)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Repository</h4>
+        <ul>
+          <li>
+            <a href="https://github.com/marlonferreira1800-hue/Pyhthon-.git" target="_blank" rel="noopener noreferrer">
+              GitHub Repository (.git)
+            </a>
+          </li>
+          <li><a href="#lab">Reverse Engineering Lab</a></li>
+          <li><a href="#autopy">AutoPy Architecture</a></li>
+          <li><a href="#top">Back to Top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Static HTML5 + CSS3 + Vanilla JS · GitHub Pages Ready · No External Build Required</p>
+    </div>
+  </footer>
+</body>
+</html>

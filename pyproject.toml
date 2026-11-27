@@ -1,0 +1,12 @@
+[project]
+name = "python-zero-to-oop-course"
+version = "1.0.0"
+description = "Complete hands-on Python course based on Fernando Feltrin's book 'Python do ZERO à Programação Orientada a Objetos', featuring reverse-engineering lessons, progressive exercises, an integrated OOP final project, and automated pytest suites."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
